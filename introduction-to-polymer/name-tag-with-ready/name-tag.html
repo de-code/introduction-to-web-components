@@ -1,0 +1,18 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="name-tag">
+  <template>
+    <span>I am <b><span id="name">?</span></b> from <span id="city">?</span>.</span>
+  </template>
+  <script>
+    Polymer({
+      name: "Jon",
+      city: "Springfield",
+      ready: function() {
+        // all elements with an id will be available in this.$
+        this.$.name.textContent = this.name;
+        this.$.city.textContent = this.city;
+      }
+    });
+  </script>
+</polymer-element>

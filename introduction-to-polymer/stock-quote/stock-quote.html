@@ -1,0 +1,47 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/core-input/core-input.html">
+
+<polymer-element name="stock-quote">
+  <template>
+    <input is="core-input" placeholder="Symbol" value="{{query}}">
+    <core-ajax url="{{queryUrl}}" auto response="{{response}}"></core-ajax>
+    <template if="{{busy}}">
+      <p>...</p>
+    </template>
+    <template if="{{quote}}">
+      <p>Name: {{quote.Name}}</p>
+      <p>Bid: {{quote.Bid}}</p>
+      <p>Ask: {{quote.Ask}}</p>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      ready: function() {
+        this.query = '';
+        this.response = null;
+        this.quote = null;
+        this.queryUrl = null;
+        this.busy = false;
+      },
+      // will be called when query is changed by input field
+      queryChanged: function(event, response) {
+        this.queryUrl = this.query.length > 0 ?
+          'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from yahoo.finance.quotes where symbol="' + this.query + '"') + '&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=' : null;
+        this.busy = !!this.queryUrl;
+        this.quote = null;
+        console.log('searchUrl=' + this.searchUrl);
+      },
+      // will be called when response is changed by core-ajax
+      responseChanged: function() {
+        console.log('response=' + this.response);
+        this.busy = false;
+        if (this.response) {
+          // this.response is a string, parse it first
+          var response = JSON.parse(this.response);
+          this.quote = response.query.results.quote;
+        }
+      }
+    });
+  </script>
+</polymer-element>

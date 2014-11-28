@@ -1,0 +1,12 @@
+<link rel="import" href="imported-element.html"/>
+
+<div id="target"></div>
+
+<script>
+  // no need to wait for event natively,
+  // with polyfill need to wait for 'HTMLImportsLoaded' event
+  var importDocument = document.querySelector('link[rel="import"]').import;
+  var content = importDocument.getElementById('content');
+  var target = document.getElementById('target');
+  target.appendChild(content.cloneNode(true));
+</script>

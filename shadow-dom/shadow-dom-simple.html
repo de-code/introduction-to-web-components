@@ -1,0 +1,7 @@
+<div id="host">Hello, DOM!</div>
+
+<script>
+var host = document.querySelector('#host');
+var root = host.createShadowRoot();
+root.textContent = 'Hello Shadow DOM!';
+</script>

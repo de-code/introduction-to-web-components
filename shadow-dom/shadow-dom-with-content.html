@@ -1,0 +1,12 @@
+<div id="host">Hello, DOM!</div>
+
+<template id="testTemplate">
+Shadow! <content></content>
+</template>
+
+<script>
+document.querySelector('#host')
+ .createShadowRoot().appendChild(
+    document.importNode(
+      document.querySelector('#testTemplate').content, true));
+</script>

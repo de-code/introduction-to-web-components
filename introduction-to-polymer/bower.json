@@ -1,0 +1,21 @@
+{
+  "name": "introduction-to-polymer",
+  "version": "0.0.0",
+  "authors": [
+    "de-git <de-git@github.com>"
+  ],
+  "description": "Introduction to Polymer",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1",
+    "core-ajax": "Polymer/core-ajax#~0.5.1",
+    "core-input": "Polymer/core-input#~0.5.1"
+  }
+}

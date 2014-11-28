@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <template id="template1">
+      <img src=""/>
+      <div class="comment"></div>
+      <script>alert('Hi!');</script>
+    </template>
+  </head>
+  <body>
+    <script>
+      var t = document.querySelector('#template1');
+      t.content.querySelector('img').src =
+        'https://raw.githubusercontent.com/webcomponents/webcomponents-icons/master/templates/templates_256x256.png';
+      t.content.querySelector('.comment').textContent = 'Templates';
+
+      var clone = document.importNode(t.content, true);
+      document.body.appendChild(clone);
+    </script>
+  </body>
+</html>

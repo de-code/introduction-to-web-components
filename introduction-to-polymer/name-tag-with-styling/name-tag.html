@@ -1,0 +1,16 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="name-tag" attributes="name city" noscript>
+  <template>
+    <style>
+      :host {
+        border: 5px solid red;
+        padding: 5px;
+      }
+      #city {
+        color: blue;
+      }
+    </style>
+    <span>I am <b><span id="name">{{ name }}</span></b> from <span id="city">{{ city }}</span>.</span>
+  </template>
+</polymer-element>

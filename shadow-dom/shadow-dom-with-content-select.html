@@ -1,0 +1,17 @@
+<div class="host">
+  <h1>Title</h1>
+  <p>Some text</p>
+  <p>More text</p>
+</div>
+
+<template id="testTemplate">
+<div style="border: 1px solid red"><content select="h1"></content></div>
+<div style="border: 1px solid blue"><content select="*"></content></div>
+</template>
+
+<script>
+document.querySelector('#host')
+ .createShadowRoot().appendChild(
+    document.importNode(
+      document.querySelector('#testTemplate').content, true));
+</script>

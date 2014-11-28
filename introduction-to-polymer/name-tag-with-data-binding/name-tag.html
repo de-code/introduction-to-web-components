@@ -1,0 +1,15 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- data can be bound directly to the attributes -->
+<polymer-element name="name-tag" attributes="name city">
+  <template>
+    <span>I am <b><span id="name">{{ name }}</span></b> from <span id="city">{{ city }}</span>.</span>
+  </template>
+  <script>
+    Polymer({
+      // default values will be overridden by attributes
+      name: "Jon",
+      city: "Springfield"
+    });
+  </script>
+</polymer-element>
